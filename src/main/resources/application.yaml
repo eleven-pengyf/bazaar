@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: bazaar
+
+
+  datasource:
+    url: jdbc:mysql://120.27.142.20:3306/bazaar?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: bazaar_project
+    password: n$Ki8jh7o@p4
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # MyBatis-Plus 配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true  # 自动驼峰映射
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 开发环境打印SQL
+  global-config:
+    db-config:
+      id-type: assign_id  # 全局默认雪花算法（但我们在注解中显式指定了，双重保险）
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# JWT 配置
+jwt:
+  secret: D*pW4RuiNi7^LDA9g5nib7M&MtDvnU7n  # 务必改成32位以上复杂字符串
+  expiration: 86400000  # 24小时
